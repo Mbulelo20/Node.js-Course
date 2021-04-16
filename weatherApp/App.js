@@ -1,7 +1,7 @@
 const request = require('postman-request');
+const geocode = require('./utils/geocode');
+const forecast = require('./utils/forecast');
 
-
-const api_key = 'http://api.weatherstack.com/current?access_key=17a1cccf8eba608ac806a71d314faffe&query=cape_town'
 
 // request({url: api_key}, (error, res) => {
 
@@ -11,12 +11,39 @@ const api_key = 'http://api.weatherstack.com/current?access_key=17a1cccf8eba608a
     
 // })
 
-// to parse the json automatically
-request({url: api_key, json: true}, (error, res) => {
-    // to access the 'current' property
-    console.log(res.body.current)
+// // to parse the json automatically
+// request({url: api_key, json: true}, (error, res) => {
+//     // to access the 'current' property
+//     console.log(res.body.current)
 
-    // to access the 'location' property
-    console.log(res.body.location)
+//     // to access the 'location' property
+//     console.log(res.body.location)
 
+// })
+
+
+
+//  error handling for low-level errors
+
+// request({url: api_key}, (error, res) => {
+//     if(error){
+
+//         console.log('Oops! Something went wrong.')
+
+//     } else if(res.body.error){
+
+//         console.log('Could not find location.')
+
+//     } else {
+
+//         console.log(JSON.parse(res.body))
+        
+//     }  
+// })
+
+
+
+geocode('Pretoria', (err, data) => {
+    console.log('Error: ', err)
+    console.log('Data: ', data)
 })
