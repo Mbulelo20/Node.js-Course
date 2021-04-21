@@ -2,6 +2,30 @@ const request = require('postman-request');
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
+const city = process.argv[2] //make input form the cml
+if(!city) {
+    console.log('Please enter a city')
+} else{
+
+    geocode(city, (err, {latitude, longitude, location}) => {
+
+        if(err){
+    
+            console.log('Error: ', err)
+    
+        }
+        forecast(location, (err, forecastData) => {
+            if(err){
+    
+                console.log('Error: ', err)
+    
+            }
+            console.log(location)
+            console.log(latitude, longitude)
+            console.log(forecastData)
+        })
+    })
+}
 
 // request({url: api_key}, (error, res) => {
 
@@ -43,7 +67,5 @@ const forecast = require('./utils/forecast');
 
 
 
-geocode('Pretoria', (err, data) => {
-    console.log('Error: ', err)
-    console.log('Data: ', data)
-})
+
+

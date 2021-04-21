@@ -1,6 +1,6 @@
 const request = require('postman-request')
 
-const api = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Caw444n.json?access_token=pk.eyJ1IjoibWJ1bGVsbyIsImEiOiJja25rN2pxbGIwOGR3MnZvMHZhbm04c3dlIn0.D1L9umIswRGLIgDh0BpSYg'
+const api = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(addr) +'.json?access_token=pk.eyJ1IjoibWJ1bGVsbyIsImEiOiJja25rN2pxbGIwOGR3MnZvMHZhbm04c3dlIn0.D1L9umIswRGLIgDh0BpSYg'
 
 request({url: api, json: true}, (error, res) => {
     
